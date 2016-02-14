@@ -1,0 +1,3 @@
+A single target you can reach
+1
+You can damage and kill your enemies. When you use this power, make an attack roll with attack bonus (10 + your Damage rank / 2) against a target you can reach. On a hit, you deal damage equal to (2d6 + your Damage rank * 2).
