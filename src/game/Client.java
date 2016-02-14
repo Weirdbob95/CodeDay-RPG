@@ -20,6 +20,10 @@ public class Client {
         if (args.length == 0) {
             conn = NetworkUtils.connectManual();
         } else {
+            if (args[0].equals("server")) {
+                Server.main(args);
+                return;
+            }
             conn = NetworkUtils.connect(args[0]);
         }
         registerMessageHandlers();
