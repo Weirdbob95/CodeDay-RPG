@@ -67,16 +67,20 @@ public class PlayerData {
         powerData.forEach(pd -> {
             all.add(text(pd.powerInfo.name));
             pd.powerInfo.desc.forEach(s -> all.add(text(s, "Small")));
+            all.add(space(10));
+            UIList options = new UIList();
             pd.optionLevels.forEach((o, x) -> {
                 if (x == 1) {
-                    all.add(text(o.name + ": " + o.desc, "Small"));
+                    options.add(space(10));
+                    options.add(text(o.name + ": " + o.desc, "Small"));
                 }
                 if (x > 1) {
-                    all.add(text(o.name + " " + x + ": " + o.desc, "Small"));
+                    options.add(space(10));
+                    options.add(text(o.name + " " + x + ": " + o.desc, "Small"));
                 }
-                all.add(space(10));
             });
-            all.add(space(10));
+            //options.setAllPadding(new Vec2(10));
+            all.add(options, space(30));
         });
         all.padding = new Vec2(15);
         return all;

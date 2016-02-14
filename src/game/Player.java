@@ -3,8 +3,10 @@ package game;
 import charactercreator.PlayerData;
 import examples.Premade2D;
 import ui.UIElement;
+import ui.UIScrollbar;
 import util.Color4;
 import util.RegisteredEntity;
+import util.Vec2;
 
 public class Player extends RegisteredEntity {
 
@@ -21,7 +23,7 @@ public class Player extends RegisteredEntity {
         this.pd = pd;
         this.color = color;
         this.id = id;
-        view = pd.toUI();
+        view = new UIScrollbar(new Vec2(800), pd.toUI());
     }
 
     @Override

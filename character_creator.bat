@@ -1,0 +1,1 @@
+java -jar CodeDay_RPG.jar char

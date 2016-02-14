@@ -6,19 +6,22 @@ import engine.Input;
 import engine.Signal;
 import static game.PingArrow.drawArrow;
 import graphics.Window2D;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import network.Connection;
 import network.NetworkUtils;
 import org.lwjgl.input.Keyboard;
+import static ui.UIElement.space;
 import static ui.UIList.list;
 import static ui.UIText.text;
 import ui.*;
-import static ui.UIElement.space;
-import util.*;
 import static util.Color4.*;
 import static util.ThreadManager.onMainThread;
+import util.*;
 
 public class Server {
 
@@ -100,6 +103,53 @@ public class Server {
 
         Input.whenKey(Keyboard.KEY_C, true).onEvent(() -> serverColor = Color4.random());
 
+        Input.whenKey(Keyboard.KEY_O, true).onEvent(() -> {
+            try {
+                PrintWriter writer = new PrintWriter("level.txt", "UTF-8");
+                Util.forRange(0, 50, 0, 50, (x, y) -> {
+                    Tile t = Tile.grid[x][y];
+                    if (t.drawable != null) {
+                        writer.println(x + " " + y + " " + t.color + " | " + t.drawable.spriteName + " " + t.drawable.color);
+                        //+ (t.drawable instanceof Creature) ? (" " + ((Creature) t.drawable).health) : "");
+                    } else {
+                        writer.println(x + " " + y + " " + t.color);
+                    }
+                    System.out.println(x + " " + y);
+                });
+                writer.close();
+            } catch (Exception ex) {
+            }
+        });
+        Input.whenKey(Keyboard.KEY_L, true).onEvent(() -> {
+            try {
+                Files.readAllLines(Paths.get("level.txt")).forEach(s -> {
+                    int x = Integer.parseInt(s.substring(0, s.indexOf(" ")));
+                    s = s.substring(s.indexOf(" ") + 1);
+                    int y = Integer.parseInt(s.substring(0, s.indexOf(" ")));
+                    System.out.println(x + " " + y);
+                    Tile t = Tile.grid[x][y];
+                    String[] color = s.substring(s.indexOf("[") + 1, s.indexOf("]")).split(", ");
+                    t.color = new Color4(Double.parseDouble(color[0]), Double.parseDouble(color[1]),
+                            Double.parseDouble(color[2]), Double.parseDouble(color[3]));
+                    if (s.contains("|")) {
+                        s = s.substring(s.indexOf("| "));
+                        String spriteName = s.substring(0, s.indexOf(" "));
+                        String[] color2 = s.substring(s.indexOf("[") + 1, s.indexOf("]")).split(", ");
+                        Color4 c = new Color4(Double.parseDouble(color2[0]), Double.parseDouble(color2[1]),
+                                Double.parseDouble(color2[2]), Double.parseDouble(color2[3]));
+                        if (spriteName.equals("ball")) {
+                            t.drawable = new Creature(c, t);
+                        } else {
+                            t.drawable = new Drawable(c, spriteName, t);
+                        }
+                    } else {
+                        t.drawable = null;
+                    }
+                });
+            } catch (Exception ex) {
+            }
+        });
+
         Core.run();
 
     }
@@ -114,12 +164,14 @@ public class Server {
         sendToAll(0, pos, color);
     }
 
+    private static Supplier<Boolean> notOverUI;
     private static int uiMode;
     private static Color4 serverColor = Color4.random();
 
     private static void UI() {
         //Loop
         UIShowOne screen = new UIShowOne();
+        notOverUI = screen.mouseOver.map(b -> !b);
         Signal<Boolean> clicked = Input.whenMouse(0, true).combineEventStreams(Input.whileMouseDown(1).limit(.05)).map(() -> true);
         Core.render.onEvent(() -> {
             screen.resize();
@@ -260,7 +312,7 @@ public class Server {
         ui.setAllPadding(new Vec2(10));
         ui.gravity = .5;
 
-        Input.whenMouse(0, true).filter(() -> uiMode == 2).onEvent(() -> {
+        Input.whenMouse(0, true).filter(() -> uiMode == 2).filter(notOverUI).onEvent(() -> {
             Tile.tileAt(Input.getMouse()).ifPresent(t -> selected.set(t.drawable));
         });
 
@@ -317,12 +369,15 @@ public class Server {
         chooseColor1.setAllPadding(new Vec2(10));
         chooseColor2.setAllPadding(new Vec2(10));
 
-        UIList ui = list(false, typeSelector, showColor, chooseColor1, chooseColor2, colors);
+        UIValue brushSize = new UIValue("Brush Size", x -> x < 5, x -> x > 1);
+        brushSize.value.set(1);
+
+        UIList ui = list(false, typeSelector, brushSize, space(15), showColor, chooseColor1, chooseColor2, colors);
         ui.gravity = .5;
 
         //Key Input
-        Input.whenMouse(0, true).combineEventStreams(Input.whileMouseDown(1).limit(.05)).filter(() -> uiMode == 1).onEvent(()
-                -> Tile.tileAt(Input.getMouse()).ifPresent(t -> {
+        Input.whenMouse(0, true).combineEventStreams(Input.whileMouseDown(1).limit(.05)).filter(() -> uiMode == 1)
+                .filter(notOverUI).onEvent(() -> Tile.tilesNear(Input.getMouse(), brushSize.value.get()).forEach(t -> {
             Color4 color = getColor.get();
             switch (typeSelector.chosen.get()) {
                 case "Tile":
@@ -343,6 +398,34 @@ public class Server {
                     break;
             }
         }));
+        Input.whenMouse(2, true).filter(() -> uiMode == 1).filter(notOverUI).onEvent(() -> Tile.tileAt(Input.getMouse()).ifPresent(t -> {
+            Color4 c = t.color;
+            red.value.set((int) Math.round(c.r * 32));
+            green.value.set((int) Math.round(c.g * 32));
+            blue.value.set((int) Math.round(c.b * 32));
+        }));
+//        Input.whileKeyDown(Keyboard.KEY_B).filter(() -> uiMode == 1)
+//                .filter(notOverUI).onEvent(() -> Tile.tilesNear(Input.getMouse(), 3).forEach(t -> {
+//            Color4 color = getColor.get();
+//            switch (typeSelector.chosen.get()) {
+//                case "Tile":
+//                    t.color = color;
+//                    sendToAll(10, t.x, t.y, color);
+//                    break;
+//                case "Block":
+//                    t.drawable = new Drawable(color, "box", t);
+//                    sendToAll(11, t.x, t.y, color);
+//                    break;
+//                case "Creature":
+//                    t.drawable = new Creature(color, t);
+//                    sendToAll(12, t.x, t.y, color);
+//                    break;
+//                case "Clear":
+//                    t.drawable = null;
+//                    sendToAll(13, t.x, t.y);
+//                    break;
+//            }
+//        }));
         return ui;
     }
 

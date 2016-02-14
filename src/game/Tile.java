@@ -2,8 +2,11 @@ package game;
 
 import engine.Core;
 import engine.Input;
+import static game.Tile.*;
 import graphics.Graphics2D;
 import graphics.Window2D;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Optional;
 import org.lwjgl.input.Keyboard;
 import util.Color4;
@@ -61,5 +64,13 @@ public class Tile {
             return Optional.of(grid[(int) (pos.x / TILE_SIZE)][(int) (pos.y / TILE_SIZE)]);
         }
         return Optional.empty();
+    }
+
+    public static List<Tile> tilesNear(Vec2 pos, int amt) {
+        List<Tile> r = new LinkedList();
+        Util.forRange(0, amt, 0, amt, (x, y) -> {
+            tileAt(pos.add(new Vec2(x, y).subtract(new Vec2(amt / 2. - .5)).multiply(TILE_SIZE))).ifPresent(r::add);
+        });
+        return r;
     }
 }
