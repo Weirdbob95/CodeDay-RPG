@@ -1,5 +1,6 @@
 package game;
 
+import charactercreator.CharacterCreator;
 import charactercreator.PlayerData;
 import engine.Core;
 import engine.Input;
@@ -30,6 +31,9 @@ public class Client {
         } else {
             if (args[0].equals("server")) {
                 Server.main(args);
+                return;
+            } else if (args[0].equals("char")) {
+                CharacterCreator.main(args);
                 return;
             }
             conn = NetworkUtils.connect(args[0]);
