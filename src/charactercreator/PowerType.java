@@ -1,4 +1,4 @@
-package codedayrpg;
+package charactercreator;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Power {
+public class PowerType {
 
     public String name;
     public int cost;
@@ -14,7 +14,7 @@ public class Power {
     public List<String> desc;
     public List<Option> options;
 
-    public Power(String name) {
+    public PowerType(String name) {
         this.name = name;
         name = name.toLowerCase();
 

@@ -1,0 +1,8 @@
+Charisma=4
+Dexterity=4
+Wisdom=3
+Intelligence=2
+Strength=3
+Constitution=3
+Affliction | 10 | Progressive=1 | Extra Condition=0 | Limited Degree=0
+Damage | 10

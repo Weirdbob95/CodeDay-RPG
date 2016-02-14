@@ -3,6 +3,7 @@ package ui;
 import engine.Core;
 import engine.Signal;
 import java.util.List;
+import java.util.function.Supplier;
 import static ui.UIText.text;
 import util.Color4;
 import util.Vec2;
@@ -13,7 +14,7 @@ public class UISelector extends UIShowOne {
     public Signal<String> chosen;
     public boolean showOptions;
 
-    public UISelector(String c, List<String> o) {
+    public UISelector(String c, List<String> o, Supplier<Boolean> canPick) {
         chosen = new Signal(c);
         options = o;
 
@@ -34,7 +35,7 @@ public class UISelector extends UIShowOne {
         add(title, list);
 
         showing = title;
-        Core.delay(0, onClick).onEvent(() -> {
+        Core.delay(0, onClick).filter(canPick).onEvent(() -> {
             if (!showOptions) {
                 showing = list;
             }
