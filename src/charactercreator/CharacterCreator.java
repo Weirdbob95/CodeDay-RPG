@@ -21,8 +21,6 @@ import static util.Color4.TRANSPARENT;
 import static util.Color4.WHITE;
 import util.Mutable;
 import util.Vec2;
-import static ui.UIElement.space;
-import static ui.UIText.text;
 
 public class CharacterCreator {
 

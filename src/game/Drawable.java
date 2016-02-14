@@ -9,10 +9,12 @@ public class Drawable {
 
     public Color4 color;
     public String spriteName;
+    public Tile tile;
 
-    public Drawable(Color4 color, String spriteName) {
+    public Drawable(Color4 color, String spriteName, Tile tile) {
         this.color = color;
         this.spriteName = spriteName;
+        this.tile = tile;
     }
 
     public void draw(Vec2 pos) {

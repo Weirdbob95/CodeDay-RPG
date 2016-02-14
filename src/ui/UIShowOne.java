@@ -32,6 +32,13 @@ public class UIShowOne extends UIElement {
         parts.forEach(e -> e.setUL(getUL().add(padding.multiply(new Vec2(1, -1)))));
     }
 
+    public void show(UIElement e) {
+        if (!parts.contains(e)) {
+            parts.add(e);
+        }
+        showing = e;
+    }
+
     @Override
     public void update(boolean click) {
         super.update(click);
