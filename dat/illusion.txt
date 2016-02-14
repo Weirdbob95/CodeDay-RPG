@@ -1,0 +1,13 @@
+2
+LOCATION
+Option: Active | 2 | true | 1 | Your illusions can change their behavior and interact with things after they are created. +2 cost per rank.
+Option: Concentration | -1 | true | 1 | Your illusions disappear when you lose your concentration, but you can concentrate on multiple illusions at once. -1 cost per rank.
+Option: Feedback | -1 | true | 1 | Whenever an illusion you create would have taken damage if it were real, you must choose to either dismiss the illusion or take an equal amount of damage. -1 cost per rank.
+Option: Mobile | 1 | true | 1 | When you make an illusion that affects a specific object, the illusion can travel with the object outside of its initial area. +1 cost per rank.
+Option: Permanent | 1 | true | 1 | Your illusions do not disappear after 1 hour. +1 cost per rank.
+Option: Resistible | -1 | true | 1 | Whenever a creature would first perceive your illusion, it can immediately make a saving throw to disbelieve it. You choose the ability of this saving throw when you choose this option. -1 cost per rank.
+Option: Single | -1 | true | 1 | You can only have one illusion at once. -1 cost per rank.
+
+You can create seemingly real illusions. When you use this power, you create an illusion at a location within 100 feet for up to 1 hour. Illusions you create must fit inside a box with side length equal to (your Illusion rank * 5) feet. Your illusions cannot change their behavior or interact with things after they are created.
+
+When a creature first pays attention to your illusion, it can make an Intelligence saving throw with DC equal to (10 + your Illusion rank / 2) to disbelieve the illusion. A creature can take an action to intensely study an illusion to make another saving throw. Creatures that have clear proof that something is an illusion automatically disbelieve it. Creatures that disbelieve an illusion can perceive both the illusion and anything the illusion hides.

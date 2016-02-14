@@ -95,7 +95,7 @@ public class CharacterCreator {
 
         UIList header = list(true, powerType, rank);
         header.setAllPadding(new Vec2(15));
-        header.gravity = .5;
+        header.gravity = 1;
 
         //Body
         UIShowOne body = new UIShowOne();

@@ -1,0 +1,9 @@
+2
+REACH
+Option: Affects Objects | 1 | true | 1 | You repair objects and constructs in the same way that you can heal creatures. +0 cost if you cannot heal creatures, +1 cost per rank otherwise.
+Option: Cure Disease | 1 | false | 1 | When you heal a target, you also cure any normal diseases it has. Flat +1 cost.
+Option: Empathic | -1 | true | 1 | When you heal a target other than yourself, you lose hit points equal to the hit points your target gains. -1 cost per rank.
+Option: Overheal | 1 | true | 1 | When you heal a target to its maximum hit points, any remaining healing becomes temporary hit points for your target. +1 cost per rank.
+Option: Restoration | 1 | false | 8 | Choose one of the following conditions: blinded, deafened, a level of exhaustion, incapacitated, paralyzed, petrified, poisoned, or stunned. When you heal a target, you can remove that condition from your target. You can take this option multiple times, choosing a different condition each time. Flat +1 cost.
+
+You can heal and cure your allies. When you use this power, a willing creature you can reach regains hit points equal to (1d6 + your Healing rank).

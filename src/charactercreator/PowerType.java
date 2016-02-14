@@ -1,6 +1,7 @@
 package charactercreator;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.LinkedList;
@@ -16,10 +17,10 @@ public class PowerType {
 
     public PowerType(String name) {
         this.name = name;
-        name = name.toLowerCase();
+        name = name.toLowerCase().replaceAll(" ", "_");
 
         try {
-            List<String> lines = Files.readAllLines(Paths.get("dat/" + name + ".txt"));
+            List<String> lines = Files.readAllLines(Paths.get("dat/" + name + ".txt"), Charset.defaultCharset());
             cost = Integer.parseInt(lines.get(0));
             target = Target.valueOf(lines.get(1));
             int i = 2;
@@ -29,6 +30,7 @@ public class PowerType {
             }
             desc = lines.subList(i + 1, lines.size());
         } catch (IOException ex) {
+            ex.printStackTrace();
             throw new RuntimeException("Cannot find active power: " + name);
         }
     }

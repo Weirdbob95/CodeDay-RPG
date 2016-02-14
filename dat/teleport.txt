@@ -1,0 +1,13 @@
+2
+LOCATION
+Option: Affects Others | 1 | true | 1 | You can teleport a single willing target you can reach. +0 cost if you cannot teleport yourself, +1 cost per rank otherwise.
+Option: Descriptive | 1 | true | 1 | You can teleport to an area if you have a brief description of it, even if you do not know its precise location. If the description is too vague or complicated or the area is outside of your range, you take damage equal to your Teleport rank * 2 and you do not move. +1 cost per rank.
+Option: Disorienting | -1 | false | 1 | When you teleport, you have disadvantage on all ability checks and attack rolls until the end of your next turn. Flat -1 cost.
+Option: Medium | -1 | true | 1 | You require a certain material to teleport through, such as shadows, tree roots, or mirrors. You can only teleport to and from locations where your medium exists. -1 cost per rank.
+Option: Portal | 1 | true | 2 | You create a portal instead of teleporting. For 1 minute or until you lose your concentration, any creature can move through the portal by moving into your square. +1 cost per rank if the portal only works in one direction, +2 cost per rank otherwise.
+Option: Quick | 1 | true | 1 | You can teleport as a bonus action instead of an action. +1 cost per rank.
+Option: Surprising | 2 | false | 1 | When you teleport, you have advantage on your next attack roll before the end of your turn. Flat +2 cost.
+Option: Swap | 1 | true | 1 | You can choose a creature or object as the target location of your teleport. When you do so, you switch locations with the creature or object. A creature can make a Wisdom saving throw with DC equal to 10 + your Teleport rank / 2 to prevent the teleport. +0 cost per rank if you must attempt a swap, +1 cost per rank otherwise.
+Option: Vision | -1 | true | 1 | You must be able to see the target location of your teleport. -1 cost per rank.
+
+You can instantly move between points in space. When you use this power, you instantly move to a location within 10 feet. Each rank of Teleport after the first doubles the distance you can travel. If you attempt to teleport to a location that is occupied by a creature or object, you take damage equal to (your Teleport rank * 2) and you do not move.

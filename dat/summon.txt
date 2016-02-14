@@ -1,0 +1,12 @@
+5
+LOCATION
+Option: Feedback | -1 | true | 1 | Whenever your minion takes damage, you must choose to either dismiss the minion or take an equal amount of damage. -1 cost per rank.
+Option: Free Will | -1 | true | 3 | Your minions do not always your orders, especially if the order might harm them. The DM controls your minions and determines whether they follow a given order. -1 cost per rank if your minions are friendly to you, -2 cost per rank if they are neutral to you, -3 cost per rank if they are unfriendly to you.
+Option: Persistent | 0 | false | 1 | You summon the same minion each time you use this ability. Your minion retains its memory, equipment, and conditions between summons. Your minion rests while it is not currently summoned. +0 cost.
+Option: Variable | 5 | true | 1 | You can choose which powers and modifiers your minions have whenever you use your Summon. The DM may require any powers and modifiers you choose to fit a common theme. +5 cost per rank.
+
+When you use this power, you summon a creature to help you fight. Your minion generic for its type; every minion you summon is close to identical. Your minion disappears when it is reduced to 0 hit points, after 1 hour, or when you use this power again.
+
+Your minions are created as players with Character Points equal to (your Summon rank * 5). Choose your minions' exact powers when you learn this power. Your minions cannot have minions or summons of their own and act on your initiative in combat. Your minions obey general commands you give them. You can control your minions' exact actions by taking a bonus action to give detailed orders.
+
+You can choose to summon multiple minions at once instead of summoning a single one. Your minions must have total Character Points equal to (your Summon rank * 5).

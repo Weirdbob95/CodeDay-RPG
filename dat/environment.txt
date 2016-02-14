@@ -1,0 +1,18 @@
+1
+REACH
+
+You can change the conditions in an area. Those conditions are determined by what effects your Environment causes. Your Environment causes one effect per rank.
+
+When you use this power, choose an object or willing target you can reach. A 30-foot radius sphere around your target gains some or all of your Environment's effects for 1 minute.
+
+The Environment power can cause the following effects:
+Cold: The area is very cold, though not cold enough to cause damage.
+Darkness: The area is filled with magical darkness that obscures vision beyond 5 feet.
+Difficult Terrain: The area is difficult terrain.
+Fog: The area is filled with fog that obscures vision beyond 5 feet.
+Heat: The area is very hot, though not hot enough to cause damage.
+Light: The area is brightly lit.
+Rain: The area is rainy and wet.
+Silence: No sound can pass through the area.
+Snow: The area is snowy and the ground is covered in snow.
+Winds: High winds impose disadvantage on all ranged attacks moving through the area.

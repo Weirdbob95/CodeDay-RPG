@@ -1,8 +1,10 @@
-Charisma=4
-Dexterity=4
-Wisdom=3
-Intelligence=2
-Strength=3
-Constitution=3
-Affliction | 10 | Progressive=1 | Extra Condition=0 | Limited Degree=0
+Charisma=0
+Dexterity=0
+Wisdom=0
+Intelligence=0
+Strength=0
+Constitution=0
+Summon | 5 | Variable=1 | Free Will=3 | Feedback=1 | Persistent=1
+Teleport | 5 | Medium=1 | Portal=2 | Vision=1 | Descriptive=1 | Swap=1 | Quick=1 | Affects Others=1
 Damage | 10
+Nullify | 6 | Reactive=1

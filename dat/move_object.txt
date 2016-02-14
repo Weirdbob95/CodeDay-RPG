@@ -1,0 +1,10 @@
+2
+LOCATION
+Option: Affects Creatures | 1 | true | 1 | Your Move Object can target Large or smaller creatures as well as objects. A creature can make a Strength saving throw with DC equal to (10 + your Move Object rank / 2) to resist being moved. +1 cost per rank.
+Option: Damaging | 1 | true | 1 | When you move an object, you can push it at a single target, dealing damage equal to (your Move Object rank * 2) to both the object and your target. If your target is a creature, it can make a Dexterity saving throw with DC equal to (10 + your Move Object rank / 2) to take no damage. +1 cost per rank.
+Option: Knockback | -1 | true | 1 | You can only move objects that are initially within your reach, though you can push those objects out of your reach. You cannot hold objects in place outside of your reach. -1 cost per rank.
+Option: Precise | 1 | false | 1 | Your Move Object can perform precise actions, such as untying knots or typing. Flat +1 cost.
+
+You can move objects from a distance. When you use this power, you can move an object you can see from any location within 100 feet of you to any other location within 100 feet of you and within (your Move Object rank * 5) feet of the first location.
+
+You can apply force to objects as if you had Strength equal to (5 + your Move Object rank). After you move an object, you can hold it in place until you lose your concentration. Your Move Object cannot perform precise actions, such as untying knots or typing.

@@ -1,0 +1,15 @@
+2
+PERSONAL
+Option: Affects Others | 1 | true | 1 | You change the form of a single target you can reach. +0 cost if you cannot change your own form, +1 cost per rank otherwise.
+Option: Huge | 1 | true | 1 | You can assume forms of Large or Huge size. When you do so, you have advantage on Strength checks and disadvantage on Dexterity checks. +1 cost per rank.
+Option: Tiny | 1 | true | 1 | You can assume forms of Small or Tiny size. When you do so, you have disadvantage on Strength checks and advantage on Dexterity checks. +1 cost per rank.
+
+You can alter your appearance. When you use this power, you assume an alternate form for 1 minute or until you change your form again.  You can only assume forms of Medium size. Your Morph rank determines what forms you can assume:
+
+Rank 1: a single other form
+
+Rank 2: any of a narrow group of forms (such as normal humans, birds, or reptiles)
+
+Rank 3: any of a broad group of forms (such as animals, machines, or humanoids)
+
+Rank 4: any form

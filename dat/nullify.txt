@@ -1,0 +1,8 @@
+2
+PERSONAL
+Option: Affects Others | 1 | true | 1 | You can nullify powers on a single target you can reach. +0 cost if you cannot nullify powers on yourself, +1 cost per rank otherwise.
+Option: Backlash | 1 | false | 0 | Choose an Active power. When you nullify a power, you immediately counterattack against the power's original caster. If your chosen power could legally target the caster, you must immediately use it on the caster. This option has cost equal to the cost of the chosen power.
+Option: Broad | 1 | true | 1 | Your Nullify ends all ongoing Active powers of your choice that are affecting you. +1 cost per rank.
+Option: Reactive | 3 | true | 1 | You can instantly nullify powers as they happen. When a creature uses a power on you, you can take a reaction to attempt to nullify to the power. If the creature fails a Charisma saving throw, the power counts as used but has no effect. +1 cost per rank if you cannot nullify ongoing powers, +3 cost per rank otherwise.
+
+You can counter other creatures' powers. When you use this power, you can end a single ongoing Active power that is affecting you. For example, you can end an Affliction on yourself, but you cannot remove damage you have already taken. If you end a power that affects multiple creatures, it ends for all creatures. The power's original caster can make a Charisma saving throw with DC equal to 10 + your Nullify rank / 2 to maintain the power.
