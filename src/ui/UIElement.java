@@ -28,9 +28,11 @@ public class UIElement {
     }
 
     public void draw() {
-        Graphics2D.fillRect(pos, size, color.get());
-        if (border) {
-            Graphics2D.drawRect(pos, size, BLACK);
+        if (size.x * size.y != 0) {
+            Graphics2D.fillRect(pos, size, color.get());
+            if (border) {
+                Graphics2D.drawRect(pos, size, BLACK);
+            }
         }
     }
 
@@ -47,6 +49,14 @@ public class UIElement {
 
     public void setUL(Vec2 pos) {
         setPos(pos.subtract(size.withX(0)));
+    }
+
+    public static UIElement space(double size) {
+        return new UIElement(new Vec2(size));
+    }
+
+    public static UIElement space(double x, double y) {
+        return new UIElement(new Vec2(x, y));
     }
 
     public void update(boolean click) {

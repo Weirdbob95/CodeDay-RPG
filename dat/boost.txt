@@ -1,0 +1,12 @@
+1
+PERSONAL
+Option: Affects Others | 1 | true | 1 | You grant the powers and modifiers to a single willing target you can reach. +0 cost per rank if you cannot boost yourself, +1 cost per rank otherwise.
+Option: Limit Break | 1 | true | 1 | The powers granted by your Boost can exceed your normal maximum rank in a power, but cannot exceed 1.5 times your normal maximum rank in a power. You can only use your Boost once per hour. +1 cost per rank.
+Option: Powerful | 1 | true | 0 | Your Boost grants additional powers and modifiers with total cost no more than your Boost rank. You can take this option multiple times. +1 cost per rank.
+Option: Reduced Duration | -1 | true | 1 | Your Boost only lasts until the start of your next turn. -1 cost per rank.
+Option: Quick | 1 | true | 1 | You can use your Boost as a bonus action instead of as an action. +1 cost per rank.
+Option: Variable | 3 | true | 1 | You can choose which powers and modifiers to grant whenever you use your Boost. The DM may require any powers and modifiers you choose to fit a common theme. +3 cost per rank.
+
+You can temporarily increase your own capabilities. Choose powers and modifiers with total cost no more than (your Boost rank * 2).
+
+When you use this power, you gain the chosen powers and modifiers for 1 minute or until you use this power again. You cannot exceed your normal maximum rank in a power.

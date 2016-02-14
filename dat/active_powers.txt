@@ -2,13 +2,3 @@ Affliction
 Boost
 Create
 Damage
-Environment
-Healing
-Illusion
-Morph
-Move Object
-Nullify
-Psionics
-Summon
-Teleport
-Transform

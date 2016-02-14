@@ -1,0 +1,17 @@
+2
+LOCATION
+Option: Animate | 1 | true | 1 | You can create simple living creatures. Creatures you create do not fight, are unintelligent, and are not loyal to you. +1 cost per rank.
+Option: Feedback | -1 | true | 1 | Whenever an object you create takes damage, you must choose to either dismiss the object or take an equal amount of damage. -1 cost per rank.
+Option: Innate | 0 | false | 1 | Objects you create are effectively real for their duration and cannot be dismissed or nullified. +0 cost.
+Option: Natural | 1 | false | 1 | Objects you create look natural and are not noticeable as magical constructs. Flat +1 cost.
+Option: Permanent | 1 | true | 1 | Objects you create do not disappear after 1 hour. +1 cost per rank.
+Option: Precise | 1 | false | 1 | You can create objects with moving parts and considerable detail. The DM determines whether an object is too complicated to create. Flat +1 cost.
+Option: Stationary | 0 | false | 1 | Objects you create hang immobile in the air. Any creature, including you, must make a Strength check with DC equal to 10 + your Create rank / 2 to move an object you create. +0 cost.
+
+You can create objects out of nothing. When you use this power, you create an object at a location within 100 feet. In general, you can form any object with no moving part more complex than a hinge. The DM determines whether an object is too complicated to create.
+
+Objects you create must fit inside a box with side length equal to (your Create rank * 5) feet. Objects you create disappear after 1 hour or when you choose to dismiss them. Objects you create have hit points equal to (your Create rank * 5) and can support weight up to (your Create rank * 50) lbs.
+
+If the created object would trap a creature inside, the creature can make a Dexterity saving throw with DC equal to (10 + your Create rank / 2). On a success, the creature can move a distance up to half its speed as a reaction.
+
+If the created object would damage a creature, such as by falling onto the creature, the creature must make a Dexterity saving throw with DC equal to your (10 + your Create rank / 2). On a failure, the creature takes damage equal to (your Create rank * 2).

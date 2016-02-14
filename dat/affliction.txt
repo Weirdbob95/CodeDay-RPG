@@ -1,0 +1,15 @@
+1
+REACH
+Option: Extra Condition | 1 | true | 1 | Your Affliction imposes two conditions instead of one at each degree of effect. +1 cost per rank.
+Option: Limited Degree | -1 | true | 2 | Your Affliction is limited to no more than two degrees of effect. If you take this option twice, your Affliction is limited to no more than one degree of effect. -1 cost per rank.
+Option: Progressive | 2 | true | 1 | Whenever your target fails a saving throw against your Affliction, it increases in effect by one degree. +2 cost per rank.
+
+You can impose debilitating conditions on your enemies. Choose which conditions you impose and which saving throw enemies use to resist this power.
+
+When you use this power, choose a target you can reach to make a saving throw with DC equal to (10 + your Affliction rank). On a failure, your target suffers one of the following conditions: blinded, dazed, deafened, a level of exhaustion, grappled, poisoned, or prone.
+
+If your target fails the saving throw by 5 or more, they instead suffer one of the following conditions: charmed, compelled, frightened, incapacitated, or restrained.
+
+If your target fails the saving throw by 10 or more, they instead suffer one of the following conditions: controlled, paralyzed, petrified, stunned, or unconscious.
+
+Your target can make a saving throw at the ends of each of its turns to remove first and second degree conditions. Third degree conditions heal after a minute outside of combat.
