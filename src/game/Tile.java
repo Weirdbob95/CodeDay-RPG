@@ -17,7 +17,7 @@ import util.Vec2;
 
 public class Tile {
 
-    public static final int GRID_SIZE = 100;
+    public static final int GRID_SIZE = 50;
     public static final double TILE_SIZE = 50;
 
     public static Tile[][] grid;
@@ -60,7 +60,7 @@ public class Tile {
     }
 
     public static Optional<Tile> tileAt(Vec2 pos) {
-        if (pos.containedBy(new Vec2(0), new Vec2(GRID_SIZE * TILE_SIZE))) {
+        if (pos.containedBy(new Vec2(0), new Vec2(GRID_SIZE * TILE_SIZE - 1))) {
             return Optional.of(grid[(int) (pos.x / TILE_SIZE)][(int) (pos.y / TILE_SIZE)]);
         }
         return Optional.empty();

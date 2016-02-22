@@ -1,10 +1,10 @@
-Charisma=0
-Dexterity=0
+Charisma=2
+Dexterity=1
 Wisdom=0
-Intelligence=0
-Strength=0
-Constitution=0
-Summon | 5 | Variable=1 | Free Will=3 | Feedback=1 | Persistent=1
-Teleport | 5 | Medium=1 | Portal=2 | Vision=1 | Descriptive=1 | Swap=1 | Quick=1 | Affects Others=1
-Damage | 10
-Nullify | 6 | Reactive=1
+Intelligence=1
+Strength=3
+Constitution=2
+Illusion | 5 | Single=1 | Active=1
+Teleport | 2 | Affects Others=1 | Disorienting=1 | Swap=1 | Portal=2
+Morph | 6 | Affects Others=1 | Tiny=1
+Move Object | 3

@@ -22,27 +22,29 @@ import ui.*;
 import static util.Color4.*;
 import static util.ThreadManager.onMainThread;
 import util.*;
+import static util.Color4.*;
 
 public class Server {
 
     private static List<ClientInfo> clients = new LinkedList();
-    private static List<Player> players = new LinkedList();
+    //private static List<Player> players = new LinkedList();
 
     public static void main(String[] args) {
         NetworkUtils.server(conn -> {
             ClientInfo info = new ClientInfo(conn);
             clients.add(info);
 
-            Mutable<Player> player = new Mutable(null);
+            clients.stream().filter(ci -> ci != info).forEach(ci -> conn.sendMessage(5, ci.p.pd.data.stream().reduce((s1, s2) -> s1 + "\n" + s2).get(), ci.p.color, ci.id));
 
             Log.print("Client " + info.id + " connected");
             conn.onClose(() -> {
-                if (player.o != null) {
-                    player.o.destroy();
+                if (info.p != null) {
+                    info.p.destroy();
                 }
                 clients.remove(info);
                 Log.print("Client " + info.id + " disconnected");
             });
+            //players.forEach(p -> conn.);
 
             conn.registerHandler(0, () -> {
                 Vec2 pos = conn.read(Vec2.class);
@@ -61,23 +63,22 @@ public class Server {
                 PlayerData pd = new PlayerData();
                 pd.loadData(Arrays.asList(data.split("\n")));
                 onMainThread(() -> {
-                    player.o = new Player(pd, color);
-                    player.o.create();
-                    players.add(player.o);
+                    info.p = new Player(pd, color);
+                    info.p.create();
                 });
                 sendToOthers(info, 5, data, color, info.id);
             });
             conn.registerHandler(6, () -> {
                 Color4 color = conn.read(Color4.class);
-                onMainThread(() -> player.o.color = color);
+                onMainThread(() -> info.p.color = color);
                 sendToOthers(info, 6, color, info.id);
             });
             conn.registerHandler(7, () -> {
                 Vec2 pos = conn.read(Vec2.class);
                 Vec2 vel = conn.read(Vec2.class);
                 onMainThread(() -> {
-                    player.o.get("position", Vec2.class).set(pos);
-                    player.o.get("velocity", Vec2.class).set(vel);
+                    info.p.get("position", Vec2.class).set(pos);
+                    info.p.get("velocity", Vec2.class).set(vel);
                 });
                 sendToOthers(info, 7, pos, vel, info.id);
             });
@@ -114,7 +115,7 @@ public class Server {
                     } else {
                         writer.println(x + " " + y + " " + t.color);
                     }
-                    System.out.println(x + " " + y);
+                    //System.out.println(x + " " + y);
                 });
                 writer.close();
             } catch (Exception ex) {
@@ -126,25 +127,29 @@ public class Server {
                     int x = Integer.parseInt(s.substring(0, s.indexOf(" ")));
                     s = s.substring(s.indexOf(" ") + 1);
                     int y = Integer.parseInt(s.substring(0, s.indexOf(" ")));
-                    System.out.println(x + " " + y);
+                    //System.out.println(x + " " + y);
                     Tile t = Tile.grid[x][y];
                     String[] color = s.substring(s.indexOf("[") + 1, s.indexOf("]")).split(", ");
                     t.color = new Color4(Double.parseDouble(color[0]), Double.parseDouble(color[1]),
                             Double.parseDouble(color[2]), Double.parseDouble(color[3]));
                     if (s.contains("|")) {
-                        s = s.substring(s.indexOf("| "));
+                        s = s.substring(s.indexOf("| ") + 2);
                         String spriteName = s.substring(0, s.indexOf(" "));
                         String[] color2 = s.substring(s.indexOf("[") + 1, s.indexOf("]")).split(", ");
                         Color4 c = new Color4(Double.parseDouble(color2[0]), Double.parseDouble(color2[1]),
                                 Double.parseDouble(color2[2]), Double.parseDouble(color2[3]));
                         if (spriteName.equals("ball")) {
                             t.drawable = new Creature(c, t);
+                            sendToAll(12, x, y, c);
                         } else {
                             t.drawable = new Drawable(c, spriteName, t);
+                            sendToAll(11, x, y, c);
                         }
                     } else {
                         t.drawable = null;
+                        sendToAll(13, x, y);
                     }
+                    sendToAll(10, x, y, t.color);
                 });
             } catch (Exception ex) {
             }
@@ -173,7 +178,7 @@ public class Server {
         UIShowOne screen = new UIShowOne();
         notOverUI = screen.mouseOver.map(b -> !b);
         Signal<Boolean> clicked = Input.whenMouse(0, true).combineEventStreams(Input.whileMouseDown(1).limit(.05)).map(() -> true);
-        Core.render.onEvent(() -> {
+        Core.renderLayer(1).onEvent(() -> {
             screen.resize();
             screen.setUL(new Vec2(-600, 400).add(Window2D.viewPos));
             screen.update(clicked.get());
@@ -436,6 +441,7 @@ public class Server {
 
         Connection conn;
         int id = maxID++;
+        Player p;
 
         public ClientInfo(Connection conn) {
             this.conn = conn;
